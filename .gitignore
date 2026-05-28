@@ -2,6 +2,10 @@
 
 node_modules/
 
+# Generated vendored ripgrep binaries (restored by scripts/restore-vendored-ripgrep.mjs)
+src/utils/vendor/ripgrep/*/rg
+src/utils/vendor/ripgrep/*/rg.exe
+
 dist/
 build/
 coverage/

@@ -18,7 +18,9 @@
     "dev": "bun run ./src/bootstrap-entry.ts",
     "start": "bun run ./src/bootstrap-entry.ts",
     "version": "bun run ./src/bootstrap-entry.ts --version",
-    "dev:restore-check": "bun run ./src/dev-entry.ts"
+    "dev:restore-check": "bun run ./src/dev-entry.ts",
+    "restore-vendor-rg": "node scripts/restore-vendored-ripgrep.mjs",
+    "postinstall": "node scripts/restore-vendored-ripgrep.mjs"
   },
   "dependencies": {
     "@alcalzone/ansi-tokenize": "*",
