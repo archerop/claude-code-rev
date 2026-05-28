@@ -1,3 +1,37 @@
+# Fork Notes
+
+This fork is used for experiments with the restored Claude Code Agent Team runtime.
+
+## Main changes
+
+- Added a postinstall restore step for vendored ripgrep binaries.
+- `bun install` now restores `src/utils/vendor/ripgrep/<platform>/rg` from `node_modules/@anthropic-ai/claude-agent-sdk/vendor/ripgrep/`.
+- The restore script copies all available platform binaries and marks non-Windows binaries executable.
+- Added tool smoke tests under `smoke_tests/` to verify Bash, Read, Write, Edit, Glob, Grep, Task, and Agent Team related tools.
+- The goal is to make `git clone -> bun install` sufficient for running the restored CLI without relying on system `rg`.
+
+## Setup
+
+```bash
+bun install
+````
+
+After installation, verify vendored ripgrep:
+
+```bash
+find src/utils/vendor/ripgrep -type f \( -name rg -o -name rg.exe \) -print
+src/utils/vendor/ripgrep/x64-linux/rg --version
+```
+
+## Smoke test
+
+```bash
+python3 smoke_tests/watch_tool_matrix_smoke.py
+```
+
+The critical gate should pass before using this runtime inside EvoClaw.
+
+# Fork Notes end
 
 # Restored Claude Code Source
 
